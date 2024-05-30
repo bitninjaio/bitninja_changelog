@@ -1,12 +1,583 @@
 # Bitninja Linux Agent changelog
 
+bitninja (3.10.18)
+    * ConfigParser
+        - Fixed some bugs in the Enhance service detector
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 29 May 2024
+     
 bitninja (3.10.17)
-
     * MalwareDetection
         - Fixed a bug where time zone mismatches could occur.
-
     * IpFilter
         - Fixed a problem where an IP address could be on both a global allow list and a global challenge list at the same time.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 22 May 2024
+   
+bitninja (3.10.16)
+    * CloudConfig
+        - Minimum resource usage changed (System): 40 → 60
+        - Minimum malwareDetection memory limit changed (MalwareDet): 100 → 600
+        - Minimum scan niceness changed (MalwareDet): 0 - 1 → 0 - 0.1
+    * MalwareDetection
+        - Added config option to scan or not scan /var/spool/cron periodically.
+    * IpFilter
+        - When an IP address is put on the allow list, it is removed from the challenge list, avoiding the case where an IP address cannot be on both the allow list and the challenge list.
+    * Process Analysis 1.0.3
+        - Add new php binaries path
+        - Validating exist binary path
+        - Remove Goroutine for new running processes, caused a concurrency
+        - Auditd monitor handling Enable and Disable
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 13 May 2024
+     
+bitninja (3.10.15)
+    * MalwareDetection
+        - Fixed an issue where 400 Bad Request errors could have been happened when hashes uploaded to the API.
+    * Vulnerability Patcher
+        - Added new patches to the data collections, against the following CVE vulnerabilities: CVE-2023-6985, CVE-2024-0699, CVE-2024-0668, CVE-2024-0428, CVE-2024-0761,CVE-2024-0842, CVE-2024-1072, CVE-2024-0685, CVE-2023-6875, CVE-2023-6933
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 30 Apr 2024
+        
+bitninja (3.10.14)
+    * Patcher
+        - Fixed an issue where some information could be missing while sending information to the API.
+        - Added a new rule against WP-Core cross-site scripting (XSS) vulnerability
+    * Process Analysis
+        - A new module is included in this package: Process Analysis module capable of finding malware that only exist in memory. It is disabled by default and can not be enabled from the dashboard, as it's in a closed Beta state for now.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 25 Apr 2024
+    
+bitninja (3.10.13)
+    * Patcher
+        - Fixed an issue regarding the cloud-config when BitNinja is installed.
+    * IpFilter
+        - Fixed an issue where a crash could have happened.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 09 Apr 2024
+    
+bitninja (3.10.12)
+    * CloudConfig
+        - Fixed an issue regarding the cloud-config when BitNinja is installed.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 09 Apr 2024
+    
+bitninja (3.10.11)
+    * The Agent is now compatible with native OpenLiteSpeed
+    * SslTerminating
+        - Fixed some problems that significantly increased the start of SslTerminating for large certificate volumes
+    * MalwareDetection
+        - Implemented config options that significantly reduce the resource consumption of MalwareDetection. At the same time, the scan time is increased. It only works with AI Scan and when the Optimize for low server performance impact option is enabled.
+            - load_friendly_timer - sets the amount of delay in milliseconds when processing files - Default value of the config option is 20000
+            - high_server_load_divider - sets the divisor of the hashes sent per batch (the original value of the hashes sent is 500) - Default value of the config option is 10
+    * IpFilter
+        - Added ipset_timeout config option to IpFilter to manually set the TTL in seconds of the IP addresses in the challenge list. The default value is 0, which means that no TTL is manually set.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 09 Apr 2024
+    
+bitninja (3.10.10)
+    * Malware Detection
+        - Fixed an issue which sometimes made false positive md5 catches
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 27 Mar 2024
+    
+bitninja (3.10.9)
+    * Malware Detection
+        - Fixed an issue where a crash could have happened when the type of upload permission file was incorrect.
+    * Vulnerability Patcher
+        - Fixed an issue where a crash could have happened when the Vulnerability Patcher did not get the patches.
+    * SQL Scanner
+        - Fixed an issue where a crash could have happened when the SQL Scanner collected database information.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 20 Mar 2024
 
-    -- bitninja.IO team <packaging@bitninja.io>  Wed, 22 May 2024 22:15 +0100
+bitninja (3.10.8)
+    * Malware Detection
+        - Fixed an issue where a crash could have happened when the AI Scan did not get the upload permission from the API.
+        - Fixed an issue regarding the validating malware signature types in case of the AI Scan where the signature state could have been missing and instead of log-only action quarantine or clean could happen.
+    * Config Parser
+        - Changed the new config check interval from 60 minutes to 1 minute.
+    * SQL Scanner
+        - Added two new SQL malware signatures to the ruleset.
+    * SslTerminating
+        - Added maxconn HAProxy config option to Cloud Config. Default value: 4000
+    * Spam Detection
+        - Fixed an issue where the sendmail_bitninja wrapper file permissions and group were not set to the same as the original sendmail permissions and group.
+        - Added a fallback logic to the module in case there is an active CageFS service present on the server.
+        - Added use_wrapper config option to the Cloud Config which will force the module to use the sendmail wrapper if there is no active CageFS service present.
+        - Changed the sendmail wrapper setup script to reload the webservers instead of restarting them.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 13 Mar 2024
+    
+bitninja (3.10.7)
+    * Fixed an issue regarding a dependency version which could have caused the IpFilter module to get stuck and stop communication.
+    -- bitninja.IO team <packaging@bitninja.io> Fri, 08 Mar 2024
+    
+bitninja (3.10.6)
+    * The Patcher (Vulnerability Patcher) module has been renewed, which is now able to fix various vulnerabilities.
+    * Two new CLI commands have been added regarding the Patcher module:
+        - bitninjacli --module=Patcher --patch=CVE_EXAMPLE_2024_0101 --domainPath=/path/to/dir
+        - bitninjacli --module=Patcher --restorePatch=/var/lib/bitninja/Patcher/backups/2024/01/01/example.php
+    * UI release is scheduled for a later date.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 29 Feb 2024
+    
+bitninja (3.10.5)
+    * Fixed an issue regarding the Captcha HTTP where a wrong parameter type could throw a Request Exception in the module.
+    * Fixed an issue regarding the Malware Detection AI Scanner where the unknown file upload could cause out-of-memory crashes.
+    * Fixed an issue regarding the Malware Detection quarantine mechanism where during the quarantine process the unlink of the original failed and threw a warning message that it failed to rename the malicious file.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 14 Feb 2024
+
+bitninja (3.10.4)
+    * Fixed an issue regarding the SpamDetection module where a combination of settings and software could lead to the temporary disruption of mailing services. - The issue could only occur where CloudLinux and Cagefs were present, and ea-php was used instead of alt-php.
+    * Fixed an issue regarding the self-update mechanism on RPM-based systems where BitNinja would not auto-start after an update in some cases.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 06 Feb 2024
+    
+bitninja (3.10.3)
+    * Fixed an issue regarding the MalwareDetection scan command when it would not scan the path if it was a single file.
+    * Fixed some custom log and certificate collection issues regarding the Config Parser module.
+    * Increased the MalwareDetection cache cleanup percentage from 1% to 2%.
+    * Added a mechanism to the MalwareDetection module which forces the module to scan the /var/spool/cron directory every 24 hours.
+    * Added a new positive incident type to the Captcha which will indicate the result of a BIC or Captcha.
+    * Extended the SpamDetection detector in a way that it will work with every SMTP solution that uses sendmail.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 01 Feb 2024
+    
+bitninja (3.10.2)
+    * Fixed the issues regarding the increased messaging error logs and stack traces introduced by the 3.10.1 version.
+    * Minor changes in our logging system.
+    -- bitninja.IO team <packaging@bitninja.io> Fri, 19 Jan 2024
+    
+bitninja (3.10.1)
+    * Fixed an issue regarding the SslTerminating module where the 60414 and 60415 ports were open after starting BitNinja despite the Close Direct Access config option being turned on.
+    * Fixed an issue regarding the MalwareDetection module where the AI scanner did not send the files to the AI for further analysis.
+    * Fixed an issue regarding the WafManager module where some ModSecurity log files were not deleted after 1 day.
+    * Fixed an issue regarding the WafManager module where it could run out of memory because of oversized request logs.
+    * Fixed an issue regarding the SqlScanner module where if there were some errors during the scan it could crash.
+    * Fixed an issue regarding the SqlScanner module where it could crash if there were multiple webservers present on the server.
+    * Minor fixes regarding the error logging.
+    * Finetuned the log detection patterns and extended the log detection paths in the SenseLog module.
+    * Finetuned the PHP cache file detection pattern in the Malware Detection module.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 16 Jan 2024
+    
+bitninja (3.10.0)
+    * Added RHEL 9 support (Alma Linux 9, Rocky Linux 9, and Centos Stream 9 are now officially supported.)
+    * Added tar as a dependency. (There were some cases where tar was missing.)
+    * Changed the old BitNinja Site Protection logo to the BitNinja Server Security logo on the captcha page.
+    * Fixed an issue regarding the Defense Robot module where the cleanup of the correlations could cause overload on the /tmp folder.
+    * Moved the WordPress integrity check from Site Protection to the Data Provider module.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 14 Dec 2023
+
+bitninja (3.9.2)
+    * Extended the resource limitation with cgroup v2 support.
+    * Fixed an issue regarding the Malware Detection module filesystem cache cleaner where it could clean the database more often than it should.
+    * Fixed an issue regarding the Malware Detection module where the incident queue could not be flushed if bitninja-mq was restarted.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 22 Nov 2023
+    
+bitninja (3.9.1)
+    * Added an automatic cleanup for correlations to the Defense Robot module. This cleanup solution ensures that only the last 7 days of correlations are being kept.
+    * Fixed an issue regarding the SystemD service file, where the Type=fork could cause problems starting the BitNinja Agent automatically.
+    * Fixed the user page redirection and the display of the logo in the DirectAdmin plugin.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 05 Dec 2023
+    
+bitninja (3.9.0)
+    * Fixed an issue where we used apt-key and it caused a deprecated GPG key location warning.
+    * Changed the service manager from init.d to systemd.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 30 Nov 2023
+    
+bitninja (3.8.9)
+    * Extended the resource limitation with cgroup v2 support.
+    * Fixed an issue regarding the Malware Detection modules filesystem cache cleaner where it could clean the database more often than it should.
+    * Fixed an issue regarding the Malware Detection module where the incident queue could not be flushed if bitninja-mq was restarted.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 22 Nov 2023
+    
+bitninja (3.8.8)
+    * Added WP Integrity Check command option to SiteProtection module
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 20 Nov 2023
+    
+bitninja (3.8.7)
+    * The Malware Detection module now invalidates the Log Only results if the Log Only mode is turned off.
+    * Fixed an issue where the redirections were wrong if a custom interface was added in Cloud Config.
+    * Fixed an issue where an already established connection was not interrupted when the given IP was added to the greylist or to the blacklist.
+    * Changed the SiteProtection plugin to open the login page and the dashboard on another page.
+    * Fix an issue regarding the SiteProtection plugin where our login response handling was incorrect.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 20 Nov 2023
+    
+bitninja (3.8.6)
+    * Fixed an issue where the Malware Detection Active Scan could not start without the AI Scan enabled.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 15 Nov 2023
+    
+bitninja (3.8.5)
+    * Added Active AI scan.
+    * Fixed several 400 Bad Request issues regarding the AI Scan.
+    * Fixed an issue where there was an error regarding our UFW handling during the stopping of the IpFilter module.
+    * Changed the minimum value of the resource limitation from 20 to 40 in Cloud Config.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 08 Nov 2023
+    
+bitninja (3.8.4)
+    * Fixed an issue regarding the Shogun when it lost connection to the message queue, which caused incidents not to be sent to the API.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 17 Oct 2023
+    
+bitninja (3.8.3)
+    * Fixed an issue regarding the Shogun optimization which caused some messages to get stuck in the message queue.
+    -- bitninja.IO team <packaging@bitninja.io> Fri, 06 Oct 2023
+    
+bitninja (3.8.2)
+    * Optimized incident processing and sending.
+    * Fixed an issue regarding the Malware Detection module where some files were scanned multiple times.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 04 Oct 2023
+    
+bitninja (3.8.1)
+    * Fixed an issue regarding the locally saved module status file creation.
+    * Fixed an issue with the AI Scan API communication error codes.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 03 Oct 2023
+    
+bitninja (3.8.0)
+    * Phase 2 (Deep Scan) has been added to the AI scan.
+    * Excluded directories in the Malware Detection module which caused the inotify to use up many resources.
+    * Changed rule 80\_1\_023 (SpamBots) to be turned off by default in SenseLog due to false positives.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 28 Sept 2023
+    
+bitninja (3.7.8)
+    * Added .discord.com to the reverse DNS whitelist.
+    * Fixed an issue regarding the LiteSpeed config parsing where config files were not parsed correctly in the case of Enhance.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 21 Sept 2023
+
+bitninja (3.7.7)
+    * Fixed an issue regarding the AI Scan where there were cases when empty files were uploaded for scan.
+    * Fixed an issue where the Config Parser module did not parse the LiteSpeed configurations properly in the case of the Enhance Control Panel which caused invalid SSL Certificate errors.
+    * Reintroduced the certMapping feature. From now on it can be used while the Cloud Config is enabled.
+    * Cert mapping can be set in the /etc/bitninja/SslTerminating/certMappings.json manually as well as with the two new commands that have been added to the SslTerminating module.
+        - bitninjacli --module=SslTerminating --add-cert --domain= --certFile= --keyFile= | optional --chainFile=
+        - bitninjacli --module=SslTerminating --del-cert --domain=
+    * After modifying the cert mapping (even after using the add-cert and del-cert commands) a force-recollect will be needed.
+    * Known Issues:
+        - The certMapping feature does not support wildcard domains (\*.example.com) for now.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 06 Sept 2023
+    
+bitninja (3.7.6)
+    * Fixed Captcha showing server's IP address in certain server environments.
+    -- bitninja.IO team <packaging@bitninja.io> Fri, 01 Sept 2023
+    
+bitninja (3.7.5)
+    * Fixed an issue regarding the module restart command which caused the module to stop and not start it back.
+    * Fixed the issue which caused the DirectAdmin plugin not to install.
+    * Added exclusion for Docker IPs during private IP auto-configuration.
+    * Added a configuration option to the IPFilter module (enableIpsetMode ) for turning CSF into IPSet mode during integration. This option is ON by default.
+        - The csf config location can also be set with a new config option called csf.conf. By default it is set to the default csf config path: /etc/csf/csf.conf.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 31 Aug 2023
+    
+bitninja (3.7.4)
+    * Fixed an issue where delisting blocklisted IPs did not work.
+    * Fixed an issue regarding the Shogun where it was crashing when there were many incidents.
+    * Fixed an issue where the Shogun could not keep up with incidents from Malware Detection.
+    * Fixed an issue where Malware Detection could not add a signature and caused errors.
+    * Added a new command to the Malware Detection remove-cache which adds the ability to remove a file or directory from the filesystem cache. Usage: bitninjacli --module=MalwareDetection --remove-cache= --file | --dir
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 23 Aug 2023
+    
+bitninja (3.7.3)
+    * Our service ports now automatically opened in UFW if it is enabled on the server.
+    * Private IP ranges are now automatically added to the Trusted Proxy.
+    * Private IPs are now auto-configured for WAF.
+    * Fixed an issue where the WAFHoneypot could not turn off properly because the honeypot files were not removed.
+    * Fixed an issue that caused redirect loops with WordPress sites behind Cloudflare.
+    * Fixed an issue regarding the disappearing WAF and Trusted Proxy redirections.
+    * Fixed an issue that caused changes to the WAF redirection mode not to apply immediately.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 16 Aug 2023
+    
+bitninja (3.7.2)
+    * Fixed an issue regarding the first startup sync to the cloud-config.
+    * Fixed a Config Parser issue where the SSL certification was set in the main nginx configuration.
+    * Fixed an issue that prevented the IpFilter module to apply changes to allowed ports when set from Cloud Config.
+    * Fixed an issue that prevented the SslTerminating module to apply Cloud Config changes to the HAProxy configs.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 09 Aug 2023
+    
+bitninja (3.7.1)
+    * Extended the filesystem cache cleaning mechanism, ensuring the database size is kept within limits.
+    * The filesystem cache is now re-enabled if the size is below the filesystem cache size limit.
+    * Fixed an issue regarding the filesystem cache when the database file was not found.
+    * Fixed an issue regarding the WAF when HEAD requests were hanging. (Also solves the Enhance file management issues.)
+    * Added .wordpress.org to the reverse DNS whitelist.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 02 Aug 2023
+    
+bitninja (3.7.0)
+    * Added a config option called cpuUsageLimit in the System module, under the resources section.
+    * Fixed an issue regarding the crash report uploading.
+    * Fixed an issue regarding the SslTerminating cert mining when no certs were found.
+    * The Nginx process and its configuration are now reloaded in case of Cloud Config changes.
+    * Startup error logs are now more verbose instead of "Failed to access the API server" log.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 19 Jul 2023
+
+bitninja (3.6.3)
+    * Removed HTTP fallback from the agent.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 10 Jul 2023
+    
+bitninja (3.6.2)
+    * Fixed the issue where users could not delist themselves if there were more than 1 IP addresses present in the X-Forwarded-For header.
+    * Fixed the issue where sometimes the file sizes were not saved properly in the filesystem cache during the AI scan.
+    * The CaptchaHttp page should now properly show the client IP.
+    * Added worker\_connections as a config option to the WAFManager module which sets the worker\_connections config option for Nginx.
+        - If this option has already been overridden in the local Nginx configs, the agent will automatically migrate it to the WAFManager config.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 4 Jul 2023
+    
+bitninja (3.6.1)
+    * Fixed an issue regarding the Malware Detection scans which caused the scans to start multiple times with AI scan.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 29 Jun 2023
+    
+bitninja (3.6.0)
+    * MalwareDetection
+        - Added the AI scan feature. Can be enabled via the enable\_ai\_scan option in the config. Disabled by default.
+        - Fixed a bug which caused AuditD to find files but the agent did not quarantine them.
+    * ProxyFilter
+        - Fixed the bug which caused some firewall rules to get duplicated.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 28 Jun 2023
+    
+bitninja (3.5.4)
+    * Fixed the issue which caused user level trusted proxies to get ignored by the WAF.
+    * Fixed the issue which prevented blocking and challenging IPs coming from user level trusted proxies.
+    * The MalwareDetection module now shows if scans are running in its process title.
+    * Added CLI command for force recollect: bitninjacli --module=SslTerminating --force-recollect.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 20 Jun 2023
+    
+bitninja (3.5.3)
+    * General
+        - Added a CLI switch to the DataProvider module called send-diagnostics which sends performance related diagnostics to the cloud.
+        - Enhance control panel is now detected correctly on secondary servers in the cluster.
+        - Fixed some configuration issues related to logging.
+    * MalwareDetection
+        - PostDetection scripts now receive the state and list of the signature which triggered them.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 14 Jun 2023
+    
+bitninja (3.5.2)
+    * MalwareDetection
+        - Fixed an issue which caused scans to scan excluded directories during a full scan.
+        - The honeypotify config option works properly now.
+        - Fixed an issue which caused the file system monitor to start when the module reloads even though the module is disabled.
+    * WAF
+        - Updated Nginx from 1.15.6 to 1.23.3.
+    * IPFilter
+        - Fixed an issue regarding the IP set hierarchy, where the user-level blocklist was stronger than the global whitelist.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 31 May 2023
+    
+bitninja (3.5.1)
+    * Reloading the ConfigParser module on an Enhance server caused the module to not parse configurations properly, this has been fixed.
+    * Post Detection scripts received the quarantined file path instead of the real file path if the MalwareDetection module was not in log only mode, this has been fixed.
+    * Fixed memory issues with the ConfigParser module.
+    * Fixed a minor issue in SiteProtection.
+    * Hotfixing in Proxyfilter, iptables rules were created more than once.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 31 May 2023
+    
+bitninja (3.5.0)
+    * IpFilter
+        - Fixed firewall-related issues when CSF is present on the server.
+        - Reworked CSF integration.
+    * ProxyFilter
+        - The --status command now reports the status of the redirections.
+        - If redirection creation fails, the module retries multiple times.
+        - Added health check which runs every 5 minutes. This includes checking the redirections. They are recreated if missing.
+        - Health check logs the status of the redirections.
+        - The module can now process commands even during its setup.
+    * SiteProtection
+        - Fixed an issue where the login failed on some WordPress sites.
+        - Added the ability to update/reinstall all SiteProtection related plugins.
+    * MalwareDetection
+        - Added the --force-clean switch to the scan command. If this is passed to the command, the module will clean malware even if it is in log only mode. This option can be passed when called from the API as well.
+    * SslTerminating
+        - Added tune.maxrewrite, tune.bufsize, and tune.h2.initial-window-size to the Cloud Config. These settings can be fine-tuned if you encounter any issues with upload speeds.
+    * General
+        - Fixed numerous firewall issues which caused the server to be unavailable for a short time.
+        - Removed the error Could not find executable for command docker which was thrown around randomly by all modules. This did not cause any specific issues but it cluttered the logs.
+        - Fixed a bug that caused some modules to crash when sending error logs to the API.
+        - Fixed a bug that caused the agent to revert to HTTP on startup even if it was set to HTTPS.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 25 May 2023
+
+bitninja (3.4.5)
+    * Fixed the issue which caused the agent to report that it is running even if it was not.
+    * Added support for the auditd module.
+        - Fixed an issue which caused the module to consume a lot of CPU.
+    * Fixed an issue where the Ssh module was not respecting the config's setting for max password failures.
+    * Fixed an issue which caused the process to crash when too many IPs were blocked.
+    * Fixed the issue where the Shogun module consumed too much CPU when there were many incidents.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 10 May 2023
+    
+bitninja (3.4.4)
+    * Fixed an issue which caused the ConfigParser to not save the files, which resulted in the inability to fetch the configurations.
+    * Fixed an issue which caused the Network module to use a lot of CPU.
+    * Fixed an issue which caused the WAF to block some CDN IPs.
+    * Fixed an issue which caused the WAF to not log all requests.
+    * Fixed an issue which caused the DirectAdmin to crash during the cleanup phase.
+    * Fixed an issue which caused the WAF to sometimes not block IPs.
+    * The CaptchaHttp page now includes the client IP.
+    * Fixed an issue which caused the IPFilter to not reload properly.
+    * Fixed an issue which caused the SslTerminating to not reload properly.
+    * Fixed an issue which caused the SslTerminating to not respect the correct SSL files.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 03 May 2023
+    
+bitninja (3.4.3)
+    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
+    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
+    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
+    * Fixed an issue which caused the WAF to block some CDN IPs.
+    * Fixed an issue which caused the WAF to sometimes not log all requests.
+    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
+    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
+    * Fixed an issue which caused the SslTerminating to not reload properly.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 25 Apr 2023
+    
+bitninja (3.4.2)
+    * Added the config option cert.cglSishedDomains to the SslTerminating module, which allows defining multiple domains for a single cert. Each domain should be separated by a comma.
+    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
+    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
+    * Fixed an issue which caused the WAF to block some CDN IPs.
+    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 19 Apr 2023
+    
+bitninja (3.4.1)
+    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
+    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
+    * Fixed an issue which caused the SslTerminating to not reload properly.
+    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
+    * Fixed an issue which caused the WAF to block some CDN IPs.
+    * Fixed an issue which caused the WAF to sometimes not log all requests.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 11 Apr 2023
+    
+bitninja (3.4.0)
+    * Added the logs of the PostDetection scripts to the audit logs.
+    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
+    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
+    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
+    * Fixed an issue which caused the WAF to block some CDN IPs.
+    * Fixed an issue which caused the WAF to sometimes not log all requests.
+    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
+    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 04 Apr 2023
+    
+bitninja (3.3.5)
+    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
+    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
+    * Fixed an issue which caused the WAF to block some CDN IPs.
+    * Fixed an issue which caused the WAF to sometimes not log all requests.
+    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
+    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
+    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 28 Mar 2023
+    
+bitninja (3.3.4)
+    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
+    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
+    * Fixed an issue which caused the WAF to block some CDN IPs.
+    * Fixed an issue which caused the WAF to sometimes not log all requests.
+    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
+    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
+    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 21 Mar 2023
+    
+bitninja (3.3.3)
+    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
+    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
+    * Fixed an issue which caused the WAF to block some CDN IPs.
+    * Fixed an issue which caused the WAF to sometimes not log all requests.
+    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
+    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
+    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 14 Mar 2023
+    
+bitninja (3.3.2)
+    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
+    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
+    * Fixed an issue which caused the WAF to block some CDN IPs.
+    * Fixed an issue which caused the WAF to sometimes not log all requests.
+    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
+    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
+    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 07 Mar 2023
+    
+bitninja (3.3.1)
+    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
+    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
+    * Fixed an issue which caused the WAF to block some CDN IPs.
+    * Fixed an issue which caused the WAF to sometimes not log all requests.
+    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
+    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
+    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 01 Mar 2023
+
+bitninja (3.3.0)
+    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
+    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
+    * Fixed an issue which caused the WAF to block some CDN IPs.
+    * Fixed an issue which caused the WAF to sometimes not log all requests.
+    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
+    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
+    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 21 Feb 2023
+
+bitninja (3.2.6)
+    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
+    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
+    * Fixed an issue which caused the WAF to block some CDN IPs.
+    * Fixed an issue which caused the WAF to sometimes not log all requests.
+    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
+    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
+    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 15 Feb 2023
+
+bitninja (3.2.4)
+    * Fixed numerous errors related to messaging.
+    * The message queue and the Dispatcher should be properly restarted now if they are not running.
+    * Fixed a bug where the SiteProtection did not get the WordPress path correctly.
+    * Fixed a bug where the SiteProtection WordPress plugin could not be uninstalled correctly.
+    * Added more whitelisted files to the SpamProtection config.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 29 Mar 2023
+
+bitninja (3.2.3)
+    * MalwareDetection
+        - Added a command to create a validating signature from a file (can be called from the API),
+            - name: CreateValidatingSignatureFromFileCommand. Accepts a single argument, which is the file path.
+    * SslTerminating
+        - Added tune.maxrewrite, tune.bufsize, and tune.h2.initial-window-size to the config in the haproxyGlobalSettings section. These settings can be fine-tuned if you encounter any issues with upload speeds.
+    * IpFilter
+        - Added a CLI command to test an IP against the ipsets for convenience: bitninjacli --checkip=ip
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 16 Mar 2023
+
+bitninja (3.2.2)
+    * Bug in the messaging system config management while using remote config is fixed
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 08 Mar 2023
+
+bitninja (3.2.1)
+    * There was a bug in SpamDetection that did not always set the whitelists.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 02 Mar 2023
+
+bitninja (3.2.0)
+    * MalwareDetection module
+        - Added a new signature type: md5-clean.
+            - md5-clean signatures will clean malware efficiently during scan phase 1.
+            - Currently, user-level md5-clean signatures only.
+        - Real-time malware detection can be disabled with the enable\_active\_scan option.
+        - The create\_signatures\_during\_phase2 option enables the agent to create
+            - md5 and md5-clean signatures during the phase 2 scan.
+                - By default, the option is disabled.
+        - Added support for inotify versions newer than 3.14.
+    * A proxy\_read\_timeout option is now added to the WAFManager module.
+        - This is a timeout threshold in the Nginx proxy.
+        - If the option was overridden initially in the local Nginx configs, then the agent migrates the overridden value to this option.
+    * Added whitelist to SpamDetection for sender scripts.
+        - There is an option to add scripts by path or by file name.
+        - Whitelisted files will not be flagged as sender scripts.
+    * bitninja dispatcher 1.0.1
+        - Now can restore API connection if it fails.
+        - Logs are now moved under the /var/log/bitninja-dispatcher/ directory.
+        - Log rotation is separate. It depends on the log size.
+        - The current log is always indicated by current.log.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 02 Mar 2023
+
+bitninja (3.1.1)
+    * The --create-signature CLI command sometimes did not work, this has been fixed.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 22 Feb 2023
+
+bitninja (3.1.0)
+    * Reworked cert watching in the SslTerminating module.
+        - This should fix most cert detection issues.
+    * Increased default timeout in HAProxy to 5 minutes.
+    * Added config option for manual cert mapping.
+    * HAProxy should no longer crash if we pick up bad certificates.
+        - Logs will indicate if a certificate is bad.
+    * SiteProtection extensions are now properly installed for every web server on the users' server.
+    * Added ability to toggle Malware Source Sending remotely.
+    * Reworked config parsing.
+        - Include directives under virtual hosts are properly handled.
+        - Added support for LiteSpeed XML.
+    * Fixed some crashes in the SpamDetection module.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 22 Feb 2023
+
+bitninja (3.0.1)
+    * Messaging error fixed that caused the Shogun module to sometimes crash upon an incident
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 16 Feb 2023
 
