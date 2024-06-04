@@ -504,7 +504,7 @@ bitninja (3.0.0)
         - CloudLinux 6.x
         - Debian 7
         - Ubuntu 14-15
-    -- bitninja.IO team <packaging@bitninja.io> Mon, 15 Feb 2014 16:53:27 +0100
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 15 Feb 2023 16:53:27 +0100
 
 bitninja (2.0.0)
     * MalwareDetection file greylist, whitelist, blacklist feature has been added.
@@ -516,4 +516,4 @@ bitninja (2.0.0)
 bitninja (1.0.0)
     * SenseLog module (log analysis) is finished and active
     * Auto restart and self-update fixes. (low urgancy)
-    -- bitninja.IO team <packaging@bitninja.io> Mon, 30 Dec 2014 16:53:27 +0100
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 30 Dec 2014 16:53:27 +0100
