@@ -382,125 +382,138 @@ bitninja (3.5.0)
         - Fixed a bug that caused the agent to revert to HTTP on startup even if it was set to HTTPS.
     -- bitninja.IO team <packaging@bitninja.io> Thu, 25 May 2023
 
-bitninja (3.4.5)
-    * Fixed the issue which caused the agent to report that it is running even if it was not.
-    * Added support for the auditd module.
-        - Fixed an issue which caused the module to consume a lot of CPU.
-    * Fixed an issue where the Ssh module was not respecting the config's setting for max password failures.
-    * Fixed an issue which caused the process to crash when too many IPs were blocked.
-    * Fixed the issue where the Shogun module consumed too much CPU when there were many incidents.
-    -- bitninja.IO team <packaging@bitninja.io> Wed, 10 May 2023
-    
-bitninja (3.4.4)
-    * Fixed an issue which caused the ConfigParser to not save the files, which resulted in the inability to fetch the configurations.
-    * Fixed an issue which caused the Network module to use a lot of CPU.
-    * Fixed an issue which caused the WAF to block some CDN IPs.
-    * Fixed an issue which caused the WAF to not log all requests.
-    * Fixed an issue which caused the DirectAdmin to crash during the cleanup phase.
-    * Fixed an issue which caused the WAF to sometimes not block IPs.
-    * The CaptchaHttp page now includes the client IP.
-    * Fixed an issue which caused the IPFilter to not reload properly.
-    * Fixed an issue which caused the SslTerminating to not reload properly.
-    * Fixed an issue which caused the SslTerminating to not respect the correct SSL files.
-    -- bitninja.IO team <packaging@bitninja.io> Wed, 03 May 2023
-    
-bitninja (3.4.3)
-    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
-    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
-    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
-    * Fixed an issue which caused the WAF to block some CDN IPs.
-    * Fixed an issue which caused the WAF to sometimes not log all requests.
-    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
-    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
-    * Fixed an issue which caused the SslTerminating to not reload properly.
-    -- bitninja.IO team <packaging@bitninja.io> Tue, 25 Apr 2023
-    
 bitninja (3.4.2)
-    * Added the config option cert.cglSishedDomains to the SslTerminating module, which allows defining multiple domains for a single cert. Each domain should be separated by a comma.
-    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
-    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
-    * Fixed an issue which caused the WAF to block some CDN IPs.
-    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
-    -- bitninja.IO team <packaging@bitninja.io> Wed, 19 Apr 2023
+    * Added an automatic flow that renews Debian gpg keys.
+    * Added /etc/cxs to the MalwareDetection path whitelist.
+    * Fixed a minor bug regarding CloudConfig.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 17 May 2023
     
 bitninja (3.4.1)
-    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
-    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
-    * Fixed an issue which caused the SslTerminating to not reload properly.
-    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
-    * Fixed an issue which caused the WAF to block some CDN IPs.
-    * Fixed an issue which caused the WAF to sometimes not log all requests.
-    -- bitninja.IO team <packaging@bitninja.io> Tue, 11 Apr 2023
+    * Moved SendMalwareScanStatus command to MalwareDetection
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 16 May 2023
     
 bitninja (3.4.0)
-    * Added the logs of the PostDetection scripts to the audit logs.
-    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
-    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
-    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
-    * Fixed an issue which caused the WAF to block some CDN IPs.
-    * Fixed an issue which caused the WAF to sometimes not log all requests.
-    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
-    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
-    -- bitninja.IO team <packaging@bitninja.io> Tue, 04 Apr 2023
-    
-bitninja (3.3.5)
-    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
-    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
-    * Fixed an issue which caused the WAF to block some CDN IPs.
-    * Fixed an issue which caused the WAF to sometimes not log all requests.
-    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
-    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
-    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
-    -- bitninja.IO team <packaging@bitninja.io> Tue, 28 Mar 2023
-    
-bitninja (3.3.4)
-    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
-    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
-    * Fixed an issue which caused the WAF to block some CDN IPs.
-    * Fixed an issue which caused the WAF to sometimes not log all requests.
-    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
-    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
-    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
-    -- bitninja.IO team <packaging@bitninja.io> Tue, 21 Mar 2023
-    
-bitninja (3.3.3)
-    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
-    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
-    * Fixed an issue which caused the WAF to block some CDN IPs.
-    * Fixed an issue which caused the WAF to sometimes not log all requests.
-    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
-    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
-    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
-    -- bitninja.IO team <packaging@bitninja.io> Tue, 14 Mar 2023
-    
-bitninja (3.3.2)
-    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
-    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
-    * Fixed an issue which caused the WAF to block some CDN IPs.
-    * Fixed an issue which caused the WAF to sometimes not log all requests.
-    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
-    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
-    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
-    -- bitninja.IO team <packaging@bitninja.io> Tue, 07 Mar 2023
+    * Implemented the Cloud Config feature.
+        - The agent now fetches its configuration from the cloud. This configuration can be modified via the dashboard.
+        - Updated & migrated various entries in the local configurations. This is done automatically on every server, there is no need to do anything with it.
+        - The --reload command now works with every module properly.
+        - Switching a module on/off locally via the CLI now updates the module’s state in the cloud as well.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 16 May 2023
     
 bitninja (3.3.1)
-    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
-    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
-    * Fixed an issue which caused the WAF to block some CDN IPs.
-    * Fixed an issue which caused the WAF to sometimes not log all requests.
-    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
-    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
-    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
-    -- bitninja.IO team <packaging@bitninja.io> Wed, 01 Mar 2023
+    * Instead of pausing malware scans when the load is high, they get throttled so we can still reduce load while also making sure scans will finish in a reasonable amount of time.
+    * Calling the CheckIp command now writes the result to the agent logs as well.
+    * Added RockyLinux to known operating systems.
+    * Fixed a startup issue in the WAF module when Nginx worker processes were stuck and the module could not start.
+    * The WAF module will not wait for the WAF tester to complete anymore.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 02 May 2023
 
 bitninja (3.3.0)
-    * Fixed an issue which caused the ConfigParser to sometimes fail when reading configurations from the cloud.
-    * Fixed an issue which caused the agent to sometimes restart when applying Cloud Config.
-    * Fixed an issue which caused the WAF to block some CDN IPs.
-    * Fixed an issue which caused the WAF to sometimes not log all requests.
-    * Fixed an issue which caused the Network module to crash during startup if the server had a lot of network interfaces.
-    * Fixed an issue which caused the Ssh module to use a lot of CPU when there were many IPs blocked.
-    * Fixed an issue which caused the Shogun to use a lot of CPU when there were many incidents.
-    -- bitninja.IO team <packaging@bitninja.io> Tue, 21 Feb 2023
+    * The agent is now compatible with the Enhance Control Panel.
+        - Limitations: 
+            - The log analysis, the DefenseRobot and the Port Honeypot is not fully functional for now.
+            - OpenLiteSpeed is not supported yet.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 26 Apr 2023
 
+bitninja (3.2.6)
+    * Fixed redirections and other firewall rules sometimes missing during startup.
+    * Communication is no longer switched to HTTP randomly, only when needed.
+        - If fallback happens, the agent tries to recover socket communication as soon as possible.
+    * Fixed the issue where some commands got lost.
+    * Local configurations are synced with the API automatically (CloudConfig).
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 13 Apr 2023
 
+bitninja (3.2.4)
+    * Fixed numerous errors related to messaging.
+    * The message queue and the Dispatcher should be properly restarted now if they are not running.
+    * Fixed a bug where the SiteProtection did not get the WordPress path correctly.
+    * Fixed a bug where the SiteProtection WordPress plugin could not be uninstalled correctly.
+    * Added more whitelisted files to the SpamProtection config.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 29 Mar 2023
+
+bitninja (3.2.3)
+    * MalwareDetection
+        - Added a command to create a validating signature from a file (can be called from the API),
+            - name: CreateValidatingSignatureFromFileCommand. Accepts a single argument, which is the file path.
+    * SslTerminating
+        - Added tune.maxrewrite, tune.bufsize, and tune.h2.initial-window-size to the config in the haproxyGlobalSettings section. These settings can be fine-tuned if you encounter any issues with upload speeds.
+    * IpFilter
+        - Added a CLI command to test an IP against the ipsets for convenience: bitninjacli --checkip=ip
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 16 Mar 2023
+
+bitninja (3.2.2)
+    * Bug in the messaging system config management while using remote config is fixed
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 08 Mar 2023
+
+bitninja (3.2.1)
+    * There was a bug in SpamDetection that did not always set the whitelists.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 02 Mar 2023
+
+bitninja (3.2.0)
+    * MalwareDetection module
+        - Added a new signature type: md5-clean.
+            - md5-clean signatures will clean malware efficiently during scan phase 1.
+            - Currently, user-level md5-clean signatures only.
+        - Real-time malware detection can be disabled with the enable\_active\_scan option.
+        - The create\_signatures\_during\_phase2 option enables the agent to create
+            - md5 and md5-clean signatures during the phase 2 scan.
+                - By default, the option is disabled.
+        - Added support for inotify versions newer than 3.14.
+    * A proxy\_read\_timeout option is now added to the WAFManager module.
+        - This is a timeout threshold in the Nginx proxy.
+        - If the option was overridden initially in the local Nginx configs, then the agent migrates the overridden value to this option.
+    * Added whitelist to SpamDetection for sender scripts.
+        - There is an option to add scripts by path or by file name.
+        - Whitelisted files will not be flagged as sender scripts.
+    * bitninja dispatcher 1.0.1
+        - Now can restore API connection if it fails.
+        - Logs are now moved under the /var/log/bitninja-dispatcher/ directory.
+        - Log rotation is separate. It depends on the log size.
+        - The current log is always indicated by current.log.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 02 Mar 2023
+
+bitninja (3.1.1)
+    * The --create-signature CLI command sometimes did not work, this has been fixed.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 22 Feb 2023
+
+bitninja (3.1.0)
+    * Reworked cert watching in the SslTerminating module.
+        - This should fix most cert detection issues.
+    * Increased default timeout in HAProxy to 5 minutes.
+    * Added config option for manual cert mapping.
+    * HAProxy should no longer crash if we pick up bad certificates.
+        - Logs will indicate if a certificate is bad.
+    * SiteProtection extensions are now properly installed for every web server on the users' server.
+    * Added ability to toggle Malware Source Sending remotely.
+    * Reworked config parsing.
+        - Include directives under virtual hosts are properly handled.
+        - Added support for LiteSpeed XML.
+    * Fixed some crashes in the SpamDetection module.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 22 Feb 2023
+
+bitninja (3.0.1)
+    * Messaging error fixed that caused the Shogun module to sometimes crash upon an incident
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 16 Feb 2023
+
+bitninja (3.0.0)
+    * Complete overhaul of the messaging infrastructure within the agent. IPC communication has been changed to a Message Queue.
+    * Commands received from the cloud are now real time. This will result in faster command execution when something is issued from the Dashboard, while also speeding up the broadcasting processes.
+    * We no longer officially support the following systems (and thus they will not receive further updates):
+        - RHEL 6
+        - CentOS 6.x
+        - CloudLinux 6.x
+        - Debian 7
+        - Ubuntu 14-15
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 15 Feb 2014 16:53:27 +0100
+
+bitninja (2.0.0)
+    * MalwareDetection file greylist, whitelist, blacklist feature has been added.
+    * Files can be restored from quarantine on the Dashboard.
+    * WAFManager can create DNAT, TPROXY and full transparent port redirections.
+        This feature can be enabled in the config.
+    -- bitninja.IO team <packaging@bitninja.io>  Thu, 29 Aug 2019  13:19:14 +0100
+
+bitninja (1.0.0)
+    * SenseLog module (log analysis) is finished and active
+    * Auto restart and self-update fixes. (low urgancy)
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 30 Dec 2014 16:53:27 +0100
