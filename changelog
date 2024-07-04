@@ -3,6 +3,25 @@
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
 
+bitninja (3.10.20)
+    * MalwareDetection
+        - Fixed an issue where a crash could have happened when new Yara rules added to the signature collection
+    * SslTerminating
+        - If the user manually adds certificates to the JSON file, those certificates will be used first.
+        - A new config option has been added to allow users to set the number of minutes to run the certificate check. This defaults to 5 minutes. Configuration name is: periodicCertCollection (Agent), Periodic SSL Certificate collection (Dashboard)
+    * Fixed an issue that caused app_ids to disappear.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 25 Jun 2024
+
+bitninja (3.10.19)
+    * SpamDetection
+        - Fixed an issue that caused an error in stopping SpamDetection
+    * DataProvider
+        - Fixed an issue in DataProvider, that caused, in the case of Enhance Control Panel, the domain not detected correctly
+    * MalwareDetection
+        - Added a new CronInjector signature to the MalwareDetection
+    * Fixed some issues with the hosted user counter script
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 12 Jun 2024
+
 bitninja (3.10.18)
     * ConfigParser
         - Fixed some bugs in the Enhance service detector
