@@ -3,6 +3,12 @@
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
 
+bitninja (3.10.21)
+    * Process Analysis 1.0.5
+        - Fixed some issues with shutdown
+    * Preparing to change the location of PID files
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 04 Jul 2024
+
 bitninja (3.10.20)
     * MalwareDetection
         - Fixed an issue where a crash could have happened when new Yara rules added to the signature collection
