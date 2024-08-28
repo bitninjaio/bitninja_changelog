@@ -3,6 +3,21 @@
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
 
+bitninja (3.10.24)
+    * SslTerminating
+        - Fixed an issue that caused problems in the collection order of certificates
+    * LogAnalysis
+        - Fixed an issue in reloading logic
+    * MalwareDetection
+        - Fixed an issue responsible for catching files
+        - In the case when changing from Inotify to Auditd, purging all Inotify processes completely
+        - After installation, MalwareDetection will start with Auditd if it is configured in CloudConfig
+        - Fixed an issue with Audispd package install 
+        - Periodically check the inode values
+        - Fixed an issue with reloading logic when changing between monitor types
+
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 28 Aug 2024
+
 bitninja (3.10.23)
     * MalwareDetection
         - Added a new middleware type, which is searching for malware downloader crons
