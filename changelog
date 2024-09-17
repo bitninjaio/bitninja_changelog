@@ -3,6 +3,20 @@
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
 
+bitninja (3.10.26)
+    * MalwareDetection
+        - Added a new middleware type, which is searching for RCE malware crons
+        - Handle an Uncaught PDOException correctly
+    * Process Analysis
+        - Fixed an issue with Redis message queue
+    * Shogun
+        - Iframely added to domain whitelist
+    * Bitninja-Reliable-Auto-Update 1.0.2
+        - From now clients being able to choose between Stable, Frequent, Beta versions
+        - If the clients choose the noUpdate option in the dashboard, RAU will ignore the automatic updater for 30 days. After that set back the Frequent update channel and search for updates every 6 hours.
+
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 17 Sep 2024
+
 bitninja (3.10.24)
     * SslTerminating
         - Fixed an issue that caused problems in the collection order of certificates
