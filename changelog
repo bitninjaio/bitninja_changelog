@@ -12,7 +12,7 @@ bitninja (3.10.28)
         - Fixed issues with the create signature command.
     * DataProvider
         - Fixed issues with the message queue.
-    -- bitninja.IO team <packaging@bitninja.io> Wed, 07 Oct 2024
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 07 Oct 2024
 
 bitninja (3.10.27)
     * MalwareDetection
@@ -21,7 +21,7 @@ bitninja (3.10.27)
         - Refactored the ApacheWpLoginReauth rule
     * SpamDetection
         - Fixed an issue that caused memory issues
-    -- bitninja.IO team <packaging@bitninja.io> Wed, 27 Sep 2024
+    -- bitninja.IO team <packaging@bitninja.io> Fri, 27 Sep 2024
 
 bitninja (3.10.26)
     * MalwareDetection
