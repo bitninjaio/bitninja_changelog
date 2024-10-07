@@ -3,6 +3,26 @@
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
 
+bitninja (3.10.28)
+    * MalwareDetection
+        - Fixed and improved a few things about our caching.
+        - Fixed issues with adding, publishing, and removing signature commands.
+        - Created a CLI command that can validate the draft signatures.
+        - Added the option to discard signature when restoring it with CLI command.
+        - Fixed issues with the create signature command.
+    * DataProvider
+        - Fixed issues with the message queue.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 07 Oct 2024
+
+bitninja (3.10.27)
+    * MalwareDetection
+        - Handle an error when the agent is unable to open the database file
+    * SenseLog
+        - Refactored the ApacheWpLoginReauth rule
+    * SpamDetection
+        - Fixed an issue that caused memory issues
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 27 Sep 2024
+
 bitninja (3.10.26)
     * MalwareDetection
         - Added a new middleware type, which is searching for RCE malware crons
