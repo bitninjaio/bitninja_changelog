@@ -3,6 +3,17 @@
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
 
+bitninja (3.10.30)
+    * SqlScanner
+        - Fixed an issue when workers didn’t stop after disabling the module.
+    * SandBoxScanner
+        - Fixed an issue when workers didn’t stop after disabling the module.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 04 Nov 2024
+
+bitninja (3.10.29)
+    * Fixed an issue that caused memory issues because of the CreateSignature command.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 09 Oct 2024
+
 bitninja (3.10.28)
     * MalwareDetection
         - Fixed and improved a few things about our caching.
