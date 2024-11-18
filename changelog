@@ -3,6 +3,15 @@
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
 
+bitninja (3.10.31)
+    * IpFilter
+        - Proxyfilter reload added to CSF post script.
+    * MalwareDetection
+        - CageFS added to exclude list.
+    * SenseLog
+        - DirectAdmin log pattern added to SenseLog module.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 19 Nov 2024
+
 bitninja (3.10.30)
     * SqlScanner
         - Fixed an issue when workers didn’t stop after disabling the module.
