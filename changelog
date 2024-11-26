@@ -3,6 +3,15 @@
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
 
+bitninja (3.10.32)
+    * MalwareDetection
+        - Fixed an issue that causes duplication in scanning.
+    * SandboxScanner
+        - Fixed an issue with reload
+    * SqlScanner
+        - Fixed an issue with reload
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 27 Nov 2024
+
 bitninja (3.10.31)
     * IpFilter
         - Proxyfilter reload added to CSF post script.
