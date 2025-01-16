@@ -3,6 +3,13 @@
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
 
+bitninja (3.10.33)
+    * MalwareDetection
+        - Quality improvements in the logging and AI Scan File Hash uploading.
+    * ProcessAnalysis
+        - Add an exclude option to config to avoid false positives.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 16 Jan 2025
+
 bitninja (3.10.32)
     * MalwareDetection
         - Fixed an issue that causes duplication in scanning.
