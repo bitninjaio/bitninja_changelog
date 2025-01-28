@@ -3,6 +3,17 @@
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
 
+bitninja (3.10.34)
+    * MalwareDetection
+        - Extend the user whitelist CLI command to show user-whitelisted signatures properly.
+        - Fixed an issue that prevented signature files from being downloaded.
+    * ConfigParser
+        - Fixed an issue that caused server aliases not parsed properly in the case of OpenLiteSpeed.
+        - Fixed an issue with Plesk Staging websites.
+    * SslTerminating
+        - Fixed an issue with HAProxy reload.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 29 Jan 2025
+
 bitninja (3.10.33)
     * MalwareDetection
         - Quality improvements in the logging and AI Scan File Hash uploading.
