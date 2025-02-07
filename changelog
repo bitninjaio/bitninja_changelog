@@ -3,6 +3,11 @@
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
 
+bitninja (3.10.36)
+    * WAFManager
+        - Fixed an issue related to restarting systemd-networkd.
+    -- bitninja.IO team <packaging@bitninja.io> Fri, 07 Feb 2025
+
 bitninja (3.10.35)
     * MalwareDetection
         -  Added a solution to examine WordPress installations using integrity checks.
