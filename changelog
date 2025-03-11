@@ -3,6 +3,20 @@
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
 
+bitninja (3.11.0)
+    * IpFilter
+      - Improved code structure and readability for better maintainability.
+      - Enhanced filtering efficiency by reducing unnecessary checks and improving algorithmic complexity.
+      - Implemented best practices for coding standards, including consistent naming conventions and improved documentation.
+      - Removed outdated functions that were no longer in use or supported.
+    * ProcessAnalysis
+      - The module added to Cloud-Config.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 12 Mar 2025
+
+bitninja (3.10.39)
+    * Fixed some issues in redis communication
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 04 Mar 2025
+
 bitninja (3.10.38)
     * ConfigParser
       - Fixed an issue with OpenLiteSpeed config parsing.
