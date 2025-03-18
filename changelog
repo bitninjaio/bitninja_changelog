@@ -3,6 +3,11 @@
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
 
+bitninja (3.11.3)
+    * IpFilter
+      - When adding IP to the challenge list command coming to the agent, we will test it only on the global whitelist.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 19 Mar 2025
+
 bitninja (3.11.2)
     * MalwareDetection
       - Fixed an issue with YARA rule processing.
