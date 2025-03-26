@@ -3,6 +3,14 @@
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
 
+bitninja (3.11.4)
+    * IpFilter
+      - Fixed an issue in BitNinja's IpFilter module that caused type error issues.
+      - Addressed the absence of the iproute2 directory on newer systems. This has been resolved by ensuring that iproute2 utilities are installed and configured on all supported platforms.
+      - Improved the process for opening ports in the CSF firewall
+      - Enhance fallback logic to DNAT
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 26 Mar 2025
+
 bitninja (3.11.3)
     * IpFilter
       - When adding IP to the challenge list command coming to the agent, we will test it only on the global whitelist.
