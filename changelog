@@ -2,6 +2,25 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.11.5)
+    * SqlScanner
+      - Fixed an issue where the module did not start scanning automatically.
+    * FilePatcher
+      - Improved file searching with better load efficiency.
+    * ProcessAnalysis
+      - Enhanced communication robustness for more stable performance.
+    * MalwareDetection
+      - Introduced a new CronDetector to identify miner scripts.
+      - Fixed an issue where immutable or append-only malware files couldn't be deleted — now the attributes are removed before deletion.
+      - Fixed an issue where legacy status files were incorrectly processed — they are now ignored.
+      - Resolved occasional errors caused by YARA when scanning binary files.
+    * SiteProtection
+      - Fixed an issue where the cPanel plugin occasionally failed to function correctly.
+    * IpFilter
+      - Fixed an issue with firewallValueDataProvider not collecting metrics properly.
+    * ProxyFilter
+      - Improved error handling when creating ipsets for the trusted proxy list. A warning is now logged if the restore process fails.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 09 Apr 2025
 
 bitninja (3.11.4)
     * IpFilter
