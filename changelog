@@ -2,6 +2,16 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.11.6)
+    * IpFilter
+      - Fixed an issue with CSF integration port opening.
+      - Fixed an issue where rules could stay in IPTables after BitNinja stops.
+    * MalwareDetection
+      - Fixed an issue in communication between the API and AI Scanner.
+      - Fixed an issue with cleaning.
+    * WafManager
+      - Fixed an issue that caused /whitelested to appear in access logs.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 29 Apr 2025
 bitninja (3.11.5)
     * SqlScanner
       - Fixed an issue where the module did not start scanning automatically.
