@@ -2,6 +2,20 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.12.0)
+    * ConfigParser
+      - Keys are now compared in a case-insensitive manner while parsing Apache config.
+    * MalwareDetection
+      - Quality improvements in active scan.
+    * WAF Pro
+      - (BETA) - This module is in it's beta state. It may still contain bugs or provide unexpected results
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 21 May 2025
+bitninja (3.11.7)
+    * ConfigParser
+      - Fixed an issue with OpenLiteSpeed configuration parsing.
+    * MalwareDetection
+      - Refactor the CronDetector middleware.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 12 May 2025
 bitninja (3.11.6)
     * IpFilter
       - Fixed an issue with CSF integration port opening.
