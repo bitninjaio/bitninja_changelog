@@ -2,6 +2,22 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.12.1)
+      - CloudConfig now displays a proper error message when the validation file is missing.
+    * ConfigParser
+      - Fixed parsing issues for LiteSpeed / OpenLiteSpeed servers.
+    * ipfilter
+      - Added a check to verify if port 25 is already opened in CSF.
+    * DataProvider
+      - Added support for detecting ISPManager as a control panel type.
+      - Improved logic behind price discovery mechanisms. (EnhanceCP)
+    * ProcessAnalysis
+      - Quality improvements and updated to version 1.0.16.
+    * WAF Pro
+      - (BETA)
+      - Fixed issue where CaptchaHttps did not work with WAF Pro.
+      - Renamed the disable_autossl feature to better reflect its actual function.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 4 Jun 2025
 bitninja (3.12.0)
     * ConfigParser
       - Keys are now compared in a case-insensitive manner while parsing Apache config.
