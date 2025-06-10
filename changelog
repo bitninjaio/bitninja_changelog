@@ -2,6 +2,14 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.12.2)
+    * IpFilter
+      - Quality improvements.
+    * MalwareDetection
+      - Fixed an issue that was preventing the cron signature file from downloading.
+    * SslTerminating
+      - Fixed an issue that was preventing the package from being installed correctly.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 10 Jun 2025
 bitninja (3.12.1)
       - CloudConfig now displays a proper error message when the validation file is missing.
     * ConfigParser
