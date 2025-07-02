@@ -2,6 +2,30 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.12.3)
+    * Backup
+      - Backup module removed from BitNinja
+    * CaptchaHttp
+      - Fixed an issue that caused invalid response body given issues
+    * DosDetection
+      - Refactor the module for improved efficiency.
+      - We have introduced a new config option:
+      - Connection states - We can specify which connection states the module should monitor. For example: ESTABLISHED, SYN_SENT, SYN_RECV
+      - Under Attack mode - If this mode is enabled, each IP will be blocked during the Under Attack period, if necessary.
+      - Under Attack Time - How long Under Attack Mode stays active.
+    * MalwareDetection
+      - Add reporting to the API when a file is restored
+    * SqlScanner
+      - Add reporting to the API when SQL data is restored
+    * WAF Manager
+      - Fixed an issue that caused problems with switching the module on and off.
+    * WAF Pro - 1.0.3
+      - Optimized redirection handling.
+      - Optimized logging.
+      - From now the requests logging in human readable (not JSON) format, like Apache logs.
+      - From now the “--status” command shows the redirection status.
+    * Fixed an issue that caused memory issues when reading the collected Virtual Hosts JSON
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 07 Jul 2025
 bitninja (3.12.2)
     * IpFilter
       - Quality improvements.
