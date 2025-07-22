@@ -2,6 +2,26 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.12.4)
+    * Configparser
+      - Fix an issue with $VH_NAME resolving.
+    * DataProvider
+      - Filtering the ihttpd service correctly.
+    * MalwareDetection
+      - From now on, mail files will be excluded from malware scans.
+    * BitNinja Reliable Auto Update - 1.0.6
+      - Fixed an issue while updating packages, when the config file changed.
+      - Added a new command that allows developers to update the BitNinja GPG key.
+    * BitNinja Process Analysis - 1.0.21
+      - Optimize the start-stop mechanism
+    * WAF Pro - 1.0.5
+      - We have simplified the configuration settings.
+      - From now on, redirection types will be set independently of the configuration.
+      - It is not necessary to set the Enable Prerouting Redirection config in Cloud Config.
+      - It is not necessary to set the Enable Prerouting Redirection config in Cloud Config.
+      - Fixed the 421 Misredirect request error.
+      - Improves log rotation handling
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 22 Jul 2025
 bitninja (3.12.3)
     * Backup
       - Backup module removed from BitNinja
