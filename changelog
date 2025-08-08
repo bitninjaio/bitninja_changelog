@@ -2,6 +2,27 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.12.5)
+    * AntiFlood
+      - Refactored module to be PSR4 compliant.
+      - Fixed issue causing limits not to reload when Cloud Configuration changed.
+    * IpFilter / Shogun
+      - Replaced the block-then-challenge list mechanism with a temporary block list.
+    * Patcher
+      - Handle database errors when executing statements
+    * PortHoneypot
+      - Refactored module to be PSR4 compliant.
+    * ProxyFilter
+      - Refactored module to be PSR4 compliant.
+      - Optimized rule checking and module start.
+    * WAF Pro
+      - Enabled secResponseBodyLimit modification via Cloud Configuration.
+    * BitNinja Reliable Auto Update - 1.0.7
+      - Users can now add the BitNinja Support SSH key to their server with a command.
+      - Cli command:
+      - bitninjacli --enable-support (not yet available)
+      - bitninjacli --disable-support (not yet available)
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 11 Aug 2025
 bitninja (3.12.4)
     * Configparser
       - Fix an issue with $VH_NAME resolving.
