@@ -2,6 +2,18 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.12.6)
+    * DataProvider / DefenseRobot / OutboundHoneypot / Shogun
+      - Refactored module to be PSR4 compliant.
+    * WAF Pro
+      - Disable keepalive for reverse-proxy
+      - Finetune multi-level certificate handling
+    * BitNinja Reliable Auto Update - 1.0.8
+      - Fixed an API URL
+      - Cli commands:
+      - bitninjacli --enable-support (available from 3.12.6)
+      - bitninjacli --disable-support (available from 3.12.6)
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 18 Aug 2025
 bitninja (3.12.5)
     * AntiFlood
       - Refactored module to be PSR4 compliant.
