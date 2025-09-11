@@ -2,6 +2,27 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.12.8)
+    * IpFilter
+      - Added the ability to disable CSF integration via Cloud Config.
+    * MalwareDetection
+      - Quality improvements against reinfection
+      - Three harmless test files are now included to verify that the malware detection engine is working correctly after installation. They will only match BitNinja's signature database.
+    * PortHoneypot
+      - From now on, it is possible to block or allow ports.
+      - Added two configuration options to the module:
+      - blocked_ports - blocking any port one by one, or the option to block all ports by specifying "*"
+      - If "*" is used, BitNinja ports and the following ports (20, 21, 22, 53, 80, 443, 465, 587, 993, 995) will remain open, or those specified in allowed_port.
+      - allowed_ports - allowing any port one by one, this option has higher priority than blocked_ports
+    * SslTerminating
+      - Added two configuration options to the module:
+      - bypassHeaderKey - the value of the request header key, for example: “allowthisrequest”
+      - bypassHeaderValue - the value of the key in the request header, for example: “test”
+      - If we set these header values for a request, our system will not analyze them.
+    * BitNinja Reliable Auto Update - 1.0.10
+      - Fixed an issue in sending the status for a failed update.
+      - From now on, selecting the No update channel will stop automatic updates until it is switched back.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 15 Sep 2025
 bitninja (3.12.7)
     * AuditManager / CaptchaSmtp / SenseWebHoneypot / SiteProtection
       - Refactored module to be PSR4 compliant.
