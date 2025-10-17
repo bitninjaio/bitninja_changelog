@@ -2,6 +2,19 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.12.10)
+    * Cli
+      - Added an option to the CLI call that allows commands to be executed on an interactive interface.
+      - The cli call is as follows: bitninjacli-interactive
+    * CaptchaHttp
+      - Made the TrustedProxyLookBackLimit value configurable, which is necessary for processing the X-Forwarded-For header.
+    * IpFilter
+      - Improves challenge list loading into ipset.
+    * WAF Pro | SSLTerminating
+      - Simplifies the monitoring of SSL certificates and configuration files by using a single, flexible file monitoring solution, and adjusts inotify limits to prevent the service from failing.
+    * BitNinja Process Analysis - 1.0.23
+      - Improves logging and configuration handling by adding detailed logs for excluded users and commands, applying default config values when missing, fixing config loading, and introducing new commands for configuration and status display.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 20 Oct 2025
 bitninja (3.12.9)
     * SslTerminating
       - Set the SNI during TLS handshake based on the HTTP Host header in HAProxy.
