@@ -2,6 +2,16 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.12.11)
+    * MalwareDetection
+      - Fixed an issue where a lot of chunk files could be generated
+    * PortHoneypot
+      - Fixed an issue where, on a fresh install, an empty element was added to blocked_ports and allowed_ports
+    * WAF Pro
+      - Fixed domain pattern handling
+    * BitNinja Process Analysis - 1.0.24
+      - Fixed some issues related to toggling the module and generating JSON.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 05 Nov 2025
 bitninja (3.12.10)
     * Cli
       - Added an option to the CLI call that allows commands to be executed on an interactive interface.
