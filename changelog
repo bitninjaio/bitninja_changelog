@@ -5,6 +5,8 @@
 bitninja (3.13.1)
     * SenseLog
       - Improved the new 404 rule for better handling.
+    * Bitninja WAF PRO - 1.0.8
+      - Fixed transparent proxy package copy on el7
     -- bitninja.IO team <packaging@bitninja.io> Tue, 02 Dec 2025
 bitninja (3.13.0)
     * SenseLog
