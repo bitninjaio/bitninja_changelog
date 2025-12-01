@@ -2,6 +2,30 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.13.1)
+    * SenseLog
+      - Improved the new 404 rule for better handling.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 02 Dec 2025
+bitninja (3.13.0)
+    * SenseLog
+      - Improved the new 404 rule for better handling.
+    * CaptchaHTTP
+      - Enhanced captcha with JA4h fingerprint support.
+    * WAF Pro
+      - Added support for transparent proxy mode.
+    * IpFilter
+      - Fixed CSF integration issue: CSF restarts only occur with active integration.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 27 Nov 2025
+bitninja (3.12.12)
+    * SenseLog
+      - Added a new rule to block scraper bots that frequently trigger 404 status codes. The rule is enabled by default.
+    * SSLTerminating
+      - Resolved an issue that could occasionally result in an exception.
+    * CaptchaHTTP
+      - Removed the BIC challenge feature.
+    * WAF Pro
+      - Increased the response body size limit to 50 MB.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 13 Nov 2025
 bitninja (3.12.11)
     * MalwareDetection
       - Fixed an issue where a lot of chunk files could be generated
