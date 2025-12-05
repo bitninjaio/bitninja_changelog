@@ -2,6 +2,15 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.13.2)
+    * SenseLog
+      - Improved the CatchScrapersWith404 rule.​
+    * WAF Pro
+      - Fixes transparent proxy restart and signal handling
+    * Bitninja WAF PRO - 1.0.9
+      - Increased proxy_buffer_size values in nginx.conf
+      - The service will not restart on Debian-based systems after updating.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 08 Dec 2025
 bitninja (3.13.1)
     * SenseLog
       - Improved the new 404 rule for better handling.
