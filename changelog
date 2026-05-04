@@ -2,6 +2,98 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.15.2)
+    * IpFilter
+      - Fine-tune the start of the module on cross-compatible OS versions.
+    * MalwareDetection
+      - Synchronizes async API host resolution with system DNS result.
+    * WAF Pro
+      - Fixed an issue where rules were being created even though the WAF Pro service was not running.
+      - Added catch-all functionality to WAF Pro, aligned with behavior commonly used in Apache and Nginx.
+      - Improved configuration handling in WAF Pro to properly support deployments that use separate certificate, private key, and chain files instead of the standard fullchain setup.
+      - If no matching certificate is found for the domain, the default certificate configured in fallback_sni is used, or it is automatically detected from the server hostname, as long as the configured hostname or domain name is the same as the one specified in the certificate.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 05 May 2026
+bitninja (3.15.1)
+    * IpFilter
+      - Introduce the crossCompatibility setting for IpFilter hooks to allow BitNinja rules in hybrid iptables-nft environments.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 29 Apr 2026
+bitninja (3.15.0)
+    * IpFilter
+      - Expanded firewall integration to support modern packet filtering and rule management with nftables.
+    * WAF Pro
+      - Added URL Captcha compatibility
+      - Added Bypass Header config option.
+    * Improved platform compatibility for newer enterprise Linux environments, just like EL10.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 27 Apr 2026
+bitninja (3.14.5)
+    * Stable release
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 09 Apr 2026
+bitninja (3.14.4)
+    * SiteProtection
+      - Fixes SiteProtection plugin installation
+    * WAF Pro
+      - Added a config option that allows users to specify the interfaces where redirections should be created
+      - Fixed an issue where Deny rules were not created successfully
+      - Fixed an issue where victims were not added to the incident report
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 31 Mar 2026
+bitninja (3.14.3)
+    * ConfigParser
+      - Fixed that cPanel log files were not being parsed.
+    * MalwareDetection
+      - Fixed that issue what caused worker processes were getting stuck.
+    * Patcher
+      - Added new patches.
+    * Process Analysis
+      - Added WHMCS processes to the excluded commands.
+    * SqlScanner
+      - Fixed incident sending.
+    * WAF Pro
+      - Integrated the latest coraza-caddy update that resolves a memory leak issue triggered during reloads.
+      - Added log rotation to log files.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 18 Mar 2026
+bitninja (3.14.2)
+    * CaptchaHttp
+      - Fixed an edge-case what causing redirection issues.
+    * MalwareDetection
+      - Added a new command. (DownloadWhitelistSqliteCommand)
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 02 Mar 2026
+bitninja (3.14.1)
+    * Hotfix version
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 23 Feb 2026
+bitninja (3.14.0)
+    * CaptchaHttp
+      - Captcha multiport compatibility in cPanel – Fixed issues affecting multiport handling for Captcha in cPanel environments.
+    * WAF PRO
+      - WAF Pro localIps.conf handling – Fixed missing localIps.conf file issue in WAF Pro configurations.
+    * TrustedProxy
+      - Default configuration now closes TrustedProxy ports.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 19 Feb 2026
+bitninja (3.13.5)
+    * SenseLog
+      - Improved the CatchScrapersWith404 rule.
+    * MalwareDetection
+      - Refactored the signature generation process.
+      - Fixed an issue where scans could occasionally hang.
+      - Fixed an issue that prevented malware from being quarantined.
+    * WAF Pro
+      - Fixed an issue where getting the maximum DF size failed.
+    * IpFilter
+      - Fixed an issue where disabling the greylist option caused increased load.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 12 Feb 2026
+bitninja (3.13.4)
+    * MalwareDetection
+      - Added a new detector.
+      - Removed duplicate entries from inotify.
+      - Prevented creation of duplicate signatures.
+      - Fixed an issue where scans could sometimes hang.
+      - Refactored the signature generation process.
+    * WAF Pro
+      - Updated handling of forwarded proto headers.
+    * DefenseRobot
+      - Fixed an issue causing the module to get stuck occasionally.
+    * IpFilter
+      - Increased ipset size limits.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 26 Jan 2026
 bitninja (3.13.3)
     * CaptchaHttp
       - Fixed an issue that caused a type error.
