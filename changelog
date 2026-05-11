@@ -2,6 +2,20 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.15.4)
+    * Fixed an issue with Cloud-Configuration 
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 11 May 2026
+bitninja (3.15.3)
+    * CaptchaHttp
+      - Implement configurable language for Captcha pages.
+      - Modernize the Captcha challenge page UI.
+    * Patcher
+      - Introduces a new CLI command and worker logic to parse the vhost report, identify unique document roots, and automatically apply all available patches to each site.
+    * System
+      - The config option mentioned above has been implemented in this module.
+    * WAF Pro
+      - Fixed improper handling of WebSocket connections that resulted in HTTP 426 errors.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 11 May 2026
 bitninja (3.15.2)
     * IpFilter
       - Fine-tune the start of the module on cross-compatible OS versions.
