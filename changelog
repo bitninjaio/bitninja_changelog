@@ -2,6 +2,23 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.15.5)
+    * IpFilter
+      - Prevented an issue where default chains could be flushed.
+      - Improved startup process for faster and more reliable initialization.
+    * WAF Pro
+      - Fixed WAF triggering to work correctly over HTTP as well.
+    * DoSDetection
+      - Resolved an issue where "under attack mode" status was not persisted to cloud config.
+    * DataProvider
+      - Added detection support for multiple control panels (initial implementation).
+    * SQL Cleaner
+      - Added support for newer MySQL versions.
+    * MalwareDetection
+      - Introduce new filemonitor
+    * General
+      - Improved PID display in ps.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 19 May 2026
 bitninja (3.15.4)
     * Fixed an issue with Cloud-Configuration 
     -- bitninja.IO team <packaging@bitninja.io> Mon, 11 May 2026
