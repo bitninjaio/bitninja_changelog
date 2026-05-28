@@ -2,6 +2,20 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.15.6)
+    * CaptchaHttp
+      - Integrates the 'Cap' captcha provider as an alternative to reCAPTCHA. The active captcha provider can now be configured via the new “captcha_provider” config; default is Google Recaptcha.
+    * ConfigParser
+      - Fixed an issue with LiteSpeed config parsing.
+      - Fixed an issue that caused the module to hang when parsing extremely large files.
+    * MalwareDetection
+      - Fixed an issue with hyper-monitor permissions.
+      - When the AI Scan feature is enabled, several traditional detection mechanisms are explicitly disabled, including specific legacy detectors and the SA/Yara local worker pools, streamlining the detection pipeline through conditional signature loading.
+      - Refactoring SQLite connections to utilize prepared statements.
+      - Reducing expensive file I/O operations by implementing smarter checks.
+    * WAF Pro
+      - Previously, the Caddy config generator could encounter PHP errors when the WAF config API returned a non-array or malformed response. This fix adds explicit type checks before accessing array keys, ensuring a robust fallback to the default configuration.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 1 Jun 2026
 bitninja (3.15.5)
     * IpFilter
       - Prevented an issue where default chains could be flushed.
