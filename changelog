@@ -2,6 +2,28 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.16.0)
+    * DefenseRobot
+      - The DefenseRobot worker now employs a non-blocking, retrying mechanism to load the virtual host report. This ensures the worker can start reliably even if the configuration file is temporarily unavailable or malformed, preventing startup failures.
+    * IpFilter
+      - Refactor rule parsing in 'getMissingRules' to properly handle 'iptables-legacy' warnings and filter out extraneous output.
+    * SslTerminating
+      - Deprecate and remove the module.
+      - Functionalities are now integrated into the unified WAF Pro module.
+    * Proxy Filter
+      - Deprecate and remove the module.
+      - Functionalities are now integrated into the unified WAF Pro module.
+    * WAF
+      - Deprecate and remove the module.
+      - Functionalities are now integrated into the unified WAF Pro module.
+    * WAF Pro
+      - Streamlines the agent web protection architecture, simplifying configuration, maintenance, and improving overall efficiency. Includes removal of associated files, configurations, and documentation.
+      - The module is now mandatory and cannot be disabled. This is required because CAPTCHA functionality over HTTPS depends on WAF Pro SSL-like behavior.
+      - In the Cloud Configuration interface, the toggle indicates whether Web Application Filtering is enabled or not.
+      - Removed deprecated config options.
+      - The agent now stops modules in parallel batches instead of asynchronously. This optimizes shutdown performance by allowing mutually independent modules to terminate concurrently.
+      - Improved Inotify change detection reliability and accuracy.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 22 Jun 2026
 bitninja (3.15.8)
     * MalwareDetection
       - Disable short PHP tag.
