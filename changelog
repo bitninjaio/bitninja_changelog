@@ -2,6 +2,20 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.16.3)
+    * IpFilter
+      - Fixed an issue that caused IPs to get CaptchaPage when IPs were presented both the allow list and the challenge list.
+    * WAF Pro
+      - Improved webserver detection when config set to Auto.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 02 Jul 2026
+bitninja (3.16.2)
+    * IpFilter
+      - Improved CSF compatibility on UDP ports.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 30 Jun 2026
+bitninja (3.16.1)
+    * WAF Pro
+      - Fixed an issue with IPv6 address normalization that could cause the backend server to become unreachable.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 29 Jun 2026
 bitninja (3.16.0)
     * DefenseRobot
       - The DefenseRobot worker now employs a non-blocking, retrying mechanism to load the virtual host report. This ensures the worker can start reliably even if the configuration file is temporarily unavailable or malformed, preventing startup failures.
