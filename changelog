@@ -2,6 +2,30 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.16.7)
+    * WAF Pro
+      - Fixed an issue that prevented Location headers from being normalized correctly.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 13 Jul 2026
+bitninja (3.16.6)
+    * WAF Pro
+      - Location header bugfix
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 08 Jul 2026
+bitninja (3.16.5)
+    * CaptchaFtp
+      - Provide configurable delist URL for CaptchaFtp and greylist.
+    * IpFilter
+      - Fixes the generation of iptables direct-access rules to ensure they are created with the correct structure and ordering, preventing misconfigured rules and improving reliability of direct access handling.
+    * WAF Pro
+      - Replaces the old ProxyFilter reload logic with the WAF3-based implementation in csf.post.sh to ensure consistent firewall reload behavior with the new WAF stack.
+      - Normalizes backend Location headers so redirect responses work correctly behind the proxy, avoiding broken or malformed redirect URLs for protected sites.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 08 Jul 2026
+bitninja (3.16.4)
+    * IpFilter
+      - Fixed cross-compatibility issues between NFT and IPTables.
+    * WAF Pro
+      - Fixed an issue where `audit.log` was rotated incorrectly. 
+      - Fixed an issue where PCI compliance caused BSU on transparent mode. 
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 06 Jul 2026
 bitninja (3.16.3)
     * IpFilter
       - Fixed an issue that caused IPs to get CaptchaPage when IPs were presented both the allow list and the challenge list.
