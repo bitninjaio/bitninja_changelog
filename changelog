@@ -2,6 +2,48 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.16.11)
+    * CaptchaHttp
+      - Configure 'cap' as the default Captcha provider for new installations and agent configurations.
+      - Introduce bypass removal incident type for successful bypass header challenges, improving incident categorization when traffic is removed from the challenge list.
+    * MalwareDetection
+      - Prevent worker crashes during directory traversal when encountering vanished or unreadable filesystem entries.
+    * General
+      - Fixed JSON syntax in Caddy agent default configuration.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 3 Aug 2026
+bitninja (3.16.10)
+    * WAF Pro
+      - Added PCI compliance handling for WAF3. Ensures WAF3 configuration and behavior meet PCI compliance requirements.
+      - Implemented automatic removal from the challenge list when a request contains a whitelisted bypass header. If a request triggers a CAPTCHA challenge but includes a configured bypass header (WAFPRO → All Settings → Bypass Header Key & Value), the agent now sends a remove-from-challengelist request, preventing unnecessary challenges for trusted traffic.
+      - Enabled Gzip compression on Caddy to reduce bandwidth usage and improve response times.
+    * SenseLog
+      - Enhanced log file observation to handle inode changes during log rotations and buffer partial lines, ensuring more reliable log ingestion.
+      - Introduced rule transformators, enabling advanced pattern matching with pre-processing such as URL decoding.
+      - Added max_tracked_ips configuration option to the ticket pool to prevent excessive memory consumption.
+      - Improved regex validation and error logging for easier debugging.
+    * ConfigParser
+      - Added recursion guard to ConfigParser. All four config readers (Apache, Nginx, LiteSpeed, OpenLiteSpeed) and the directory walker now track visited file paths and enforce a maximum include depth, preventing segfaults caused by cyclic include chains or symlink loops in server configurations.
+    * Agent Core
+      - Introduced SOS mode for agent startup. When the server is under heavy DDoS and the agent cannot start normally, it now enters a lightweight SOS mode that provides essential protections (DoS mitigation, IP filtering) without requiring a full initialization, ensuring at least basic defense is active instead of none.
+      - Fixed an issue with first-time configuration sync that could cause incorrect initial state.
+    * MalwareDetection
+      - Refactored the MalwareScanner module to be permanently enabled (always-on). The module can no longer be fully disabled via the dashboard — instead, active scanning is controlled by the module's on/off toggle. This ensures quarantine, Defense Robot, and Proc Analysis remain functional at all times, and enables future improvements for AI-assisted scanning.
+    -- bitninja.IO team <packaging@bitninja.io> Fri, 31 Jul 2026
+bitninja (3.16.9)
+    * WAF Pro
+      - Introduces proxy_buffer_size and proxy_busy_buffers_size settings to the WAF Pro Transparent Proxy configuration schema.
+      - Add custom SSL certificate mapping feature to WAF Pro. This feature enables manual management of SSL certificates for domains within WAF Pro. New CLI commands (--add-cert, --del-cert) allow adding and removing certificates, which are stored in certMappings.json and loaded into the WAF Pro configuration. This provides flexibility for serving user-provided certificates.
+      - Coraza-Caddy caches WAF instances based on a hash of the directive string. Because of this, simply updating the contents of referenced rule files (such as removed rules config files) does not trigger a reload, since their file paths remain the same.
+    * SenseLog
+      - Updates the Postfix login detector to use the correct rule ID and reduces the maximum allowed SMTP login retries to improve the detection of brute-force attempts.
+    * General
+      - Avoid unconditionally restarting the BitNinja service after a package upgrade. This change ensures that if the service was intentionally stopped by the user before the upgrade, it remains stopped afterward. If the service was active prior to the upgrade, it will be restarted as usual.
+    -- bitninja.IO team <packaging@bitninja.io> Sun, 20 Jul 2026
+bitninja (3.16.8)
+    * WAF Pro
+      - The previous Location header normalization was removed.
+      - This release introduces a new configurable option, delete_x_forwarded_host, which defaults to 1 (true). When enabled, the X-Forwarded-Host header is stripped from upstream reverse proxy requests. This resolves issues with some backends, such as Plesk, which can generate broken Location headers when X-Forwarded-Host is present.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 15 Jul 2026
 bitninja (3.16.7)
     * WAF Pro
       - Fixed an issue that prevented Location headers from being normalized correctly.
