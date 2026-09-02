@@ -2,6 +2,23 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.17.0)
+    * CaptchaHttp
+      - Fixed an issue that could lead to high CPU load.
+    * PortHoneypot
+      - This change ensures a blocking wait until all critical dependencies are met, preventing premature startup and ensuring consistent rule application.
+    * WAF Pro
+      - Introduce static file exclude regex for optimization.
+    * Migrate all PID file references from the deprecated /var/run directory to the modern /run directory. This ensures consistency with current Linux FHS and systemd practices, where /run is typically a tmpfs.   
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 03 Sep 2026
+bitninja (3.16.14)
+    * WAF Pro
+      - Introduces the second phase of JA4-related work for early attack detection in Caddy. The objective is to improve the ability to identify potentially malicious traffic at an earlier stage of request processing.
+      - Fixes backend server detection in WAF Pro. Correct backend identification is important for ensuring that WAF-related processing is applied to the appropriate server environment.
+      - Copy dependency to the relevant project components, enabling functionality that relies on the WAF3 package.
+    * ProcessAnalysis
+      - Contains fixes for the ProcessAnalysis component. These changes are intended to improve the reliability and stability of process analysis.   
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 27 Aug 2026
 bitninja (3.16.13)
     * ConfigParser
       - Improve config change detection and parsing efficiency
