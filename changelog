@@ -2,6 +2,29 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.17.2)
+    * IpFilter
+      - Ensure consistent IP filter cleanup
+    * WAF Pro
+      - Introduces a new 'access_log_enabled' configuration option for the WAF Pro Nginx transparent proxy. This allows administrators to enable or disable Nginx access logging to '/var/log/bitninja-waf3/nginx_proxy_access.log'.
+      - By default, access logging is disabled to prevent excessive disk usage.
+      - Improve robustness of WAF Pro vhost report loading
+    * SpamDetection
+      - Fixed an issue that caused SWAP memory leak      
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 14 Sep 2026
+bitninja (3.17.1)
+    * CaptchaHttp
+      - Add explicit AI agent instructions to CAPTCHA page
+    * IpFilter
+      - Implementing the TTL mechanism for challenge-listed IPs in NFTables mode.
+    * MalwareDetection
+      -  Improve stability of Malware Detection database operations.
+      - Implemented automatic detection and clearing of multiple injections without requiring manual re-scans.
+    * PortHoneypot
+      - PortHoneypot relies on specific IP sets for its redirection and filtering functionality. This change introduces an explicit readiness check for these IP sets, similar to the existing check for redirection chains, before initializing listeners. This prevents potential startup issues and ensures a more robust initialization sequence by confirming all required dependencies are fully prepared.
+    * WAF Pro
+      - Correct response compression enablement check. When the API is unavailable, the WAF module will now attempt to load the last successfully retrieved configuration from disk. This prevents immediately falling back to a generic default config and ensures continuous operation with the intended rules. Pattern rules, their metadata, and their specific order are now persisted to disk to enable this robust fallback. 
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 09 Sep 2026
 bitninja (3.17.0)
     * CaptchaHttp
       - Fixed an issue that could lead to high CPU load.
