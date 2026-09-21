@@ -2,6 +2,13 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.17.4)
+    * IpFilter
+      - Integrates the bpfpolicier PHP extension to perform native, in-process eBPF map lookups for IP set membership checks.    
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 23 Sep 2026
+bitninja (3.17.3)
+    * Adds JA4H whitelist for bypassing checks, and greylist to force CaptchaHttp challenges. CaptchaHttp's JA4H learning is now configurable and respects managed challenge fingerprints. WAF3's JA4H blocking is configurable, allowing global CDN fingerprints to be disabled while retaining local entries. New CLI commands add-ja4B and del-ja4i manage entries across all three lists, which are synchronized from CDN. A migration flushes the old CaptchaHttp known-bad cache.     
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 17 Sep 2026
 bitninja (3.17.2)
     * IpFilter
       - Ensure consistent IP filter cleanup
