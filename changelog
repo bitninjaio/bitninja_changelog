@@ -2,6 +2,14 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.17.5)
+    * Refine Policier service management and health checks.
+    * Introduces robust runtime probes to verify actual eBPF subsystem functionality. This addresses cases in containerized environments
+    * MalwareDetection
+      - Refactor LoadApi to enhance API host resolution.
+      - Updated error handling to utilize a new method for both API and sync fallback errors, ensuring consistent failure tracking and file cleanup.
+      - Refactor FileHashUploader to improve hash upload handling   
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 23 Sep 2026
 bitninja (3.17.4)
     * IpFilter
       - Integrates the bpfpolicier PHP extension to perform native, in-process eBPF map lookups for IP set membership checks.    
