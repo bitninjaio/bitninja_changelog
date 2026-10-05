@@ -2,6 +2,20 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.17.6)
+    * IpFilter:
+      - Older iptables versions (pre 1.6.0) accept the -w option but reject a seconds value, leading to "Bad argument '5'" errors. This change adds a mechanism to detect and cache whether the current iptables binary supports -w SECONDS. If not, subsequent commands will use -w without a duration, ensuring compatibility across different iptables installations.
+      - Adds a runtime detection and fallback mechanism for UFW commands. If the 'comment' argument is not supported by the UFW version on the system, commands will automatically retry without it, improving compatibility across different environments.
+    * CaptchaHttp:
+      - Ensures visitor-facing origin ports (e.g., cPanel's 2083) are correctly identified and preserved after a captcha challenge, preventing routing issues.
+    * DosDetection:
+      - The 'under attack mode' functionality, including its configuration schema, worker logic, auto-off timer, and cloud persistence, has been completely removed.
+      - Configuration management has become much more intuitive; limits can now be set on a per-port basis.
+    * MalwareDetection:
+      - This change ensures that directories configured for active (inotify) malware monitoring are also included in the full scan process. It addresses potential gaps where paths critical for detection might have been overlooked by the full scanner.
+    * WAF Pro:
+      - Increase WAF Pro Nginx worker connections to 4096 on default.  
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 06 Oct 2026
 bitninja (3.17.5)
     * Refine Policier service management and health checks.
     * Introduces robust runtime probes to verify actual eBPF subsystem functionality. This addresses cases in containerized environments
