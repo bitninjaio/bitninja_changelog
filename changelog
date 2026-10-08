@@ -2,6 +2,22 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.17.8)
+    * CaptchaHttp:
+      - Refine backend port mapping logic to correctly handle transparent proxy mode.
+    -- bitninja.IO team <packaging@bitninja.io> Fri, 09 Oct 2026
+bitninja (3.17.7)
+    * MalwareDetection:
+      - Update the yara-clean workflow in agent and cloudscan to support rules that define cleanup boundaries with start_pattern and end_pattern when main_pattern is unavailable.
+      - Consult cloud for known malware before creating signatures.
+    * SenseLog:
+      - Remove deprecated senselog config options.
+    * CaptchaHttp:
+      - Implement custom Captcha site and secret key configuration.
+    * System:
+      - Remove deprecated DosDetection migration.
+      - Increase system shutdown timeouts and stabilize WAF3 stop.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 08 Oct 2026
 bitninja (3.17.6)
     * IpFilter:
       - Older iptables versions (pre 1.6.0) accept the -w option but reject a seconds value, leading to "Bad argument '5'" errors. This change adds a mechanism to detect and cache whether the current iptables binary supports -w SECONDS. If not, subsequent commands will use -w without a duration, ensuring compatibility across different iptables installations.
