@@ -2,6 +2,21 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.17.10)
+    * AntiFlood
+      - Implement persistent TTLs for temporary blacklist entries.
+    * DosDetection
+      - Implement persistent TTLs for temporary blacklist entries.
+    * CaptchaHttp
+      - Update preg_match delimiter in BackendPortHelper.
+    * MalwareDetection
+      - Resolve absolute paths for chrooted processes in Active Scan mechanism.
+    * Shogun
+      - This refactors the incident processing loop for improved robustness and efficiency.
+    * WAF Pro
+      - The previous exact path matching was insufficient for URLs containing special characters like dots (e.g., file extensions). This change introduces regular expression matching to handle such cases more robustly.
+      - Prevent incorrect WAF Pro route match for absent backend-port cookie.
+    -- bitninja.IO team <packaging@bitninja.io> Thu, 29 Oct 2026
 bitninja (3.17.9)
     * IpFilter:
       - For IP "NET" sets, getSize() now returns the total number of IP addresses covered by the configured network ranges instead of the number of entries. This provides more accurate results for capacity planning and reporting.
