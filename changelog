@@ -2,6 +2,36 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.17.11)
+    * System:
+      - Restart/reload BitNinja when nftables.service restarts/reloads, so its firewall rules are restored automatically.
+      - Restart crashing workers with exponential backoff (capped at 60 seconds); the crash counter resets after 10 minutes of stable running.
+      - Log the missing licence (no payment) warning once per start in a single line instead of repeatedly for each module.
+      - Tighten directory permissions for directories created by BitNinja.
+      - Harden the Heimdall API client against unsafe data deserialization.
+      - Fix XXE vulnerability in the LiteSpeed configuration parser.
+      - Add per-IP connection limiting to the internal socket server.
+    * IpFilter:
+      - Escape file names in nftables commands to prevent command injection.
+      - Fix nftables error output contaminating the IP list file.
+      - Fix temporary file race condition in the ipset timeout manager.
+    * PortHoneypot:
+      - Add per-IP connection tracking and limiting.
+      - Fix fatal error when a client closes the connection.
+    * MalwareDetection:
+      - Improve resilience of unknown file uploads with retry backoff.
+      - Write file collector state files atomically, with cleanup on failure.
+    * SenseLog:
+      - Add support for RFC 3339 syslog timestamps and broaden log detection patterns.
+      - Mitigate log injection by sanitizing log data on output.
+    * Shogun:
+      - Replace per-incident logging with a single batch summary log line per processed batch.
+    * CaptchaHttp:
+      - Fix TLS fingerprint success cache to be written as a valid JSON object.
+    * WAF Pro:
+      - Write JA4 block, challenge and whitelist lists atomically.
+      - Advertise the Alt-Svc HTTP/3 header only on port 443 and only when HTTP/3 is reachable, and send it on HTTP/3 responses too.
+    -- bitninja.IO team <packaging@bitninja.io> Tue, 03 Nov 2026
 bitninja (3.17.10)
     * AntiFlood
       - Implement persistent TTLs for temporary blacklist entries.
