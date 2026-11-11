@@ -2,6 +2,39 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.17.12)
+    * IpFilter
+      - Validate downloaded IP list files before replacing the cache, so a truncated or corrupt file cannot leave the greylist unloaded or overwrite a good backup.
+      - Fix eBPF IP filtering so blacklisted IPs are blocked.
+    * SenseLog
+      - Allow several detectors to watch the same log file, so Postfix SASL login failures are detected even when another detector already watches that file.
+      - Count a log event only once when the same line is written to more than one log file.
+      - Stop treating aborted or unauthenticated Dovecot disconnects as failed logins.
+    * WAF3
+      - Restore the transparent-proxy routing policy rule after the host reconfigures its network, so proxied requests no longer time out.
+      - Ship WAF3 1.1.3 with pinned Coraza and Caddy dependencies to prevent memory exhaustion and reload hangs, and add a systemd memory limit.
+    * WAF Pro
+      - Do not enable the transparent proxy when the WAF Pro service is down.
+    * CaptchaHttp
+      - Bound the TLS fingerprint session cache and avoid rewriting cache files on every request, preventing out-of-memory crashes.
+    * MalwareDetection
+      - Do not create SA-MD5 signatures for files that contain no PHP code.
+      - No longer delete the scan database on SQLite errors; back it up and attempt recovery instead.
+      - Reuse cached malware verdicts for unchanged files and quarantine them directly, without re-uploading.
+      - Log missing-file skips at debug level instead of warning, and remove stale cache rows for files that no longer exist.
+      - Compress quarantined files and add optional size, count and retention limits; compressed entries can be restored.
+      - Run periodic SQLite VACUUM and WAL checkpoint maintenance on the scan database.
+      - Fix scan resume so a missing last-scanned file no longer causes an endless loop, and remaining directories are still scanned.
+      - Do not mark files as clean when the SA worker crashes; release detectors on config reload and fix the SA worker lifecycle.
+    * PortHoneypot
+      - Speed up agent stop by not removing already flushed redirection rules a second time.
+    * System
+      - When stopping dispatcher and the message queue, wait only until the process has exited instead of always sleeping for 10 seconds.
+    * Framework
+      - Do not crash-loop when Redis is unavailable; handle a missing client and retry instead.
+    * Packaging
+      - Add systemd MemoryHigh cgroup limits for the bitninja-sam and dispatcher units.
+    -- bitninja.IO team <packaging@bitninja.io> Mon, 16 Nov 2026
 bitninja (3.17.11)
     * System:
       - Restart/reload BitNinja when nftables.service restarts/reloads, so its firewall rules are restored automatically.
