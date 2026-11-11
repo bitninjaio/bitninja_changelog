@@ -13,8 +13,7 @@ bitninja (3.17.12)
     * WAF3
       - Restore the transparent-proxy routing policy rule after the host reconfigures its network, so proxied requests no longer time out.
       - Ship WAF3 1.1.3 with pinned Coraza and Caddy dependencies to prevent memory exhaustion and reload hangs, and add a systemd memory limit.
-    * WAF Pro
-      - Do not enable the transparent proxy when the WAF Pro service is down.
+      - Do not enable the transparent proxy when the WAF3 service is down.
     * CaptchaHttp
       - Bound the TLS fingerprint session cache and avoid rewriting cache files on every request, preventing out-of-memory crashes.
     * MalwareDetection
