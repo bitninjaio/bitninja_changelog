@@ -2,6 +2,28 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.17.13)
+    * IpFilter
+      - Apply port_filter changes, such as greylist and blacklist port bypasses for mail ports, on module reload and --reloadiptables without a full service restart; removed ports are cleaned up as well.
+    * CaptchaSmtp
+      - Apply additional port changes on module reload and --reloadiptables and remove redirections for ports that are no longer configured.
+    * WAF3
+      - Fix HTTP/3 HEAD responses returning Content-Length: 0 when the response has no Content-Length, so clients such as pdf.js no longer treat files as empty.
+      - Remove the Via: 1.1 Caddy response header.
+      - Fix the transparent proxy falling back to DNAT after a CSF reload because of a race with the IpFilter reload.
+      - Enable and advertise HTTP/3 only after a successful HTTP/3 probe; otherwise stay on HTTP/1.1 and HTTP/2 and log the reason.
+      - Ship WAF3 1.1.4.
+    * MalwareDetection
+      - Fix a worker crash when SQLite VACUUM ran inside an open scan transaction (3.17.12 regression).
+      - Remove malware source file collection.
+      - Optimize SQLite queries when AI scan is used.
+    * Framework
+      - Add memory usage, peak usage, memory limit, and cache sizes to out-of-memory crash reports, and log per-module memory peaks periodically.
+    * System
+      - Reserve the WAF Pro ports 60300, 60301, 60414 and 60415 in net.ipv4.ip_local_reserved_ports at startup, keeping existing reservations.
+    * CaptchaHttp
+      - Fix multiport captcha issue on cPanel.
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 18 Nov 2026
 bitninja (3.17.12)
     * IpFilter
       - Validate downloaded IP list files before replacing the cache, so a truncated or corrupt file cannot leave the greylist unloaded or overwrite a good backup.
