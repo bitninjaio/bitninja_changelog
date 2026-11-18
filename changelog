@@ -2,6 +2,10 @@
 
 # When adding an entry to the changelog, it should follow the established format.
 # Any commented lines will be ignored when generating the changelog for the package.
+bitninja (3.17.14)
+    * WAF3
+      - Fixed HTTP 502 on all sites after the transparent proxy fell back to DNAT mode (stale Transparent WAF Pro config was re-exported after the HTTP/3 probe).
+    -- bitninja.IO team <packaging@bitninja.io> Wed, 18 Nov 2026
 bitninja (3.17.13)
     * IpFilter
       - Apply port_filter changes, such as greylist and blacklist port bypasses for mail ports, on module reload and --reloadiptables without a full service restart; removed ports are cleaned up as well.
